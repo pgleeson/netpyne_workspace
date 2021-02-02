@@ -45,7 +45,7 @@ cfg.checkErrors = False # True # leave as False to avoid extra printouts
 # ----------------------------------------------------------------------------
 # Run parameters
 # ----------------------------------------------------------------------------
-cfg.duration = 170 
+cfg.duration = 170
 cfg.dt = 0.025
 cfg.seeds = {'conn': 4321, 'stim': 1234, 'loc': 4321}
 cfg.hParams['v_init'] = -65
@@ -114,7 +114,7 @@ cfg.analysis['iplotConn'] = {'includePre': pops, 'includePost': pops, 'feature':
 # ----------------------------------------------------------------------------
 # Network parameters
 # ----------------------------------------------------------------------------
-cfg.gridSpacingPyr = 1  # 50
+cfg.gridSpacingPyr = 50
 cfg.gridSpacingBasket = [1, 1, 3]
 cfg.xzScaling = 1 #100
 cfg.sizeY = 2000
@@ -193,7 +193,7 @@ cfg.__dict__.update({
  'sim_prefix': 'ERPYes100Trials',
  'gridSpacingPyr': 1,
  'gridSpacingBasket': [1, 1, 3],
- 'xzScaling': 1,
+ 'xzScaling': 100,
  'sizeY': 2000,
  'localConn': True,
  'rhythmicInputs': True,
@@ -303,8 +303,8 @@ cfg.__dict__.update({
  'L5Pyr_dend_gbar_km': 200.0,
  'L5Pyr_dend_gbar_cat': 0.0002,
  'L5Pyr_dend_gbar_ar': 1e-06,
- 'N_pyr_x': 10,
- 'N_pyr_y': 10,
+ 'N_pyr_x': 3,
+ 'N_pyr_y': 3,
  'gbar_L2Pyr_L2Pyr_ampa': 0.0005,
  'gbar_L2Pyr_L2Pyr_nmda': 0.0005,
  'gbar_L2Basket_L2Pyr_gabaa': 0.05,
@@ -487,6 +487,17 @@ cellParams['L2Pyr'] = {
                     'km': {'gbar': cfg.L2Pyr_soma_gbar_km}},
                 'topol': {}
             },
+            'apical_trunk': {
+                'geom': {'L': cfg.L2Pyr_apicaltrunk_L,
+                        'Ra': cfg.L2Pyr_dend_Ra,
+                        'cm': cfg.L2Pyr_dend_cm,
+                        'diam': cfg.L2Pyr_apicaltrunk_diam,
+                        'nseg': 1,
+                    'pt3d': [
+                        [0.0, 13.0, 0.0, cfg.L2Pyr_apicaltrunk_diam],
+                        [0.0, 13.0+cfg.L2Pyr_apicaltrunk_L, 0.0, cfg.L2Pyr_apicaltrunk_diam]]},
+                'topol': {'childX': 0.0, 'parentSec': 'soma', 'parentX': 1.0}
+            },
             'apical_1': {
                 'geom': {'L': cfg.L2Pyr_apical1_L,
                         'Ra': cfg.L2Pyr_dend_Ra,
@@ -507,17 +518,6 @@ cellParams['L2Pyr'] = {
                     'pt3d': [[0.0, 48.0, 0.0, cfg.L2Pyr_apicaloblique_diam],
                         [0.0-cfg.L2Pyr_apicaloblique_L, 48.0, 0.0, cfg.L2Pyr_apicaloblique_diam]]},
                 'topol': {'childX': 0.0, 'parentSec': 'apical_trunk', 'parentX': 1.0}
-            },
-            'apical_trunk': {
-                'geom': {'L': cfg.L2Pyr_apicaltrunk_L,
-                        'Ra': cfg.L2Pyr_dend_Ra,
-                        'cm': cfg.L2Pyr_dend_cm,
-                        'diam': cfg.L2Pyr_apicaltrunk_diam,
-                        'nseg': 1,
-                    'pt3d': [
-                        [0.0, 13.0, 0.0, cfg.L2Pyr_apicaltrunk_diam],
-                        [0.0, 13.0+cfg.L2Pyr_apicaltrunk_L, 0.0, cfg.L2Pyr_apicaltrunk_diam]]},
-                'topol': {'childX': 0.0, 'parentSec': 'soma', 'parentX': 1.0}
             },
             'apical_tuft': {
                 'geom': {'L': cfg.L2Pyr_apicaltuft_L,
@@ -643,6 +643,16 @@ cellParams['L5Pyr'] = {
                     'km': {'gbar': cfg.L5Pyr_soma_gbar_km}},
                 'topol': {}
             },
+            'apical_trunk': {
+                'geom': {'L': cfg.L5Pyr_apicaltrunk_L,
+                        'Ra': cfg.L5Pyr_dend_Ra,
+                        'cm': cfg.L5Pyr_dend_cm,
+                        'diam': cfg.L5Pyr_apicaltrunk_diam,
+                        'nseg': 3,
+                    'pt3d': [[0.0, 23.0, 0.0, cfg.L5Pyr_apicaltrunk_diam ],
+                        [0.0, 23.0+cfg.L5Pyr_apicaltrunk_L, 0.0, cfg.L5Pyr_apicaltrunk_diam]]},
+                'topol': {'childX': 0.0, 'parentSec': 'soma', 'parentX': 1.0}
+            },
             'apical_1': {
                 'geom': {'L': cfg.L5Pyr_apical1_L,
                         'Ra': cfg.L5Pyr_dend_Ra,
@@ -672,16 +682,6 @@ cellParams['L5Pyr'] = {
                     'pt3d': [[0.0, 83.0, 0.0, cfg.L5Pyr_apicaloblique_diam],
                         [0.0-cfg.L5Pyr_apicaloblique_L, 83.0, 0.0, cfg.L5Pyr_apicaloblique_diam]]},
                 'topol': {'childX': 0.0, 'parentSec': 'apical_trunk', 'parentX': 1.0}
-            },
-            'apical_trunk': {
-                'geom': {'L': cfg.L5Pyr_apicaltrunk_L,
-                        'Ra': cfg.L5Pyr_dend_Ra,
-                        'cm': cfg.L5Pyr_dend_cm,
-                        'diam': cfg.L5Pyr_apicaltrunk_diam,
-                        'nseg': 3,
-                    'pt3d': [[0.0, 23.0, 0.0, cfg.L5Pyr_apicaltrunk_diam ],
-                        [0.0, 23.0+cfg.L5Pyr_apicaltrunk_L, 0.0, cfg.L5Pyr_apicaltrunk_diam]]},
-                'topol': {'childX': 0.0, 'parentSec': 'soma', 'parentX': 1.0}
             },
             'apical_tuft': {
                 'geom': {'L': cfg.L5Pyr_apicaltuft_L,
@@ -838,8 +838,8 @@ netParams.cellParams = cellParams
 # ----------------------------------------------------------------------------
 
 # layer locations
-layersE = {'L2': [0.0*cfg.sizeY, 0.0*cfg.sizeY], 'L5': [0.654*cfg.sizeY, 0.654*cfg.sizeY]} # 0.654 = 1308/2000
-layersI = {'L2': [0.0*cfg.sizeY-00.0, 0.0*cfg.sizeY-00.0], 'L5': [0.654*cfg.sizeY-00.0, 0.654*cfg.sizeY-00.0]}
+layersE = {'L2': [0.0*cfg.sizeY,      0.0*cfg.sizeY], 'L5': [0.654*cfg.sizeY, 0.654*cfg.sizeY]} # 0.654 = 1308/2000
+layersI = {'L2': [0.0*cfg.sizeY-150.0, 0.0*cfg.sizeY-00.0], 'L5': [0.654*cfg.sizeY-150.0, 0.654*cfg.sizeY-00.0]}
 
 # Create list of locations for Basket cells based on original ad hoc rules
 # define relevant x spacings for basket cells
@@ -891,7 +891,7 @@ netParams.synMechParams['GABAB'] = {'mod':'Exp2Syn', 'tau1': 1, 'tau2': 20, 'e':
 
 # Weight and delay distance-dependent functions (as strings) to use in conn rules
 weightDistFunc = '{A_weight} * exp(-(dist_2D**2) / ({lamtha}**2))'
-delayDistFunc = '{A_delay} / exp(-(dist_2D**2) / ({lamtha}**2))'
+delayDistFunc = 'min(10000,{A_delay} / exp(-(dist_2D**2) / ({lamtha}**2)))'
 
 if cfg.localConn:
 

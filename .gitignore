@@ -1,3 +1,13 @@
 /__pycache__
 /x86_64
 /run_hnn.html
+*.hoc
+*.gv
+/HNN.net.nml.pov
+/HNN.net.nml_movie.ini
+/HNN.net.png
+*.dat
+/LEMS_HNN_nrn.py
+/run_pulse_hnn.html
+/LEMS_*ml
+*_nrn.py

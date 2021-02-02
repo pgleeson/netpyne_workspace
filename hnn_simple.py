@@ -1,6 +1,6 @@
 
 """
-netParams.py 
+netParams.py
 
 High-level specifications for HNN network model using NetPyNE
 
@@ -15,7 +15,7 @@ import itertools as it
 
 
 """
-cfg.py 
+cfg.py
 
 Simulationg configuration for NetPyNE-based HNN network model
 
@@ -24,7 +24,7 @@ Contributors: salvadordura@gmail.com
 
 from netpyne import specs
 
-cfg = specs.SimConfig()  
+cfg = specs.SimConfig()
 simConfig = cfg
 
 cfg.checkErrors = False # True # leave as False to avoid extra printouts
@@ -45,10 +45,10 @@ cfg.checkErrors = False # True # leave as False to avoid extra printouts
 # ----------------------------------------------------------------------------
 # Run parameters
 # ----------------------------------------------------------------------------
-cfg.duration = 170
+cfg.duration = 170 
 cfg.dt = 0.025
-cfg.seeds = {'conn': 4321, 'stim': 1234, 'loc': 4321} 
-cfg.hParams['v_init'] = -65  
+cfg.seeds = {'conn': 4321, 'stim': 1234, 'loc': 4321}
+cfg.hParams['v_init'] = -65
 cfg.verbose = 0
 cfg.cvode_active = False
 cfg.printRunTime = 0.1
@@ -60,11 +60,11 @@ cfg.oneSynPerNetcon = False  # allow using the same synapse for multiple netcons
 
 
 # ----------------------------------------------------------------------------
-# Recording 
+# Recording
 # ----------------------------------------------------------------------------
 cfg.recordTraces = {'V_soma': {'sec': 'soma', 'loc': 0.5, 'var': 'v'}}
-cfg.recordCells = [('L2Basket',0), ('L2Pyr',0), ('L5Basket',0), ('L5Pyr',0)]  
-cfg.recordStims = False  
+cfg.recordCells = [('L2Basket',0), ('L2Pyr',0), ('L5Basket',0), ('L5Pyr',0)]
+cfg.recordStims = False
 cfg.recordStep = 0.025
 cfg.recordDipoles = {'L2': ['L2Pyr'], 'L5': ['L5Pyr']}
 
@@ -81,7 +81,7 @@ cfg.saveJson = False
 cfg.saveDataInclude = ['simData', 'simConfig'] #, 'netParams', 'net']
 
 # ----------------------------------------------------------------------------
-# Analysis and plotting 
+# Analysis and plotting
 # ----------------------------------------------------------------------------
 pops = ['L2Basket', 'L2Pyr', 'L5Basket', 'L5Pyr']
 evprox = ['evokedProximal_1_L2Basket', 'evokedProximal_1_L2Pyr', 'evokedProximal_1_L5Basket', 'evokedProximal_1_L5Pyr',
@@ -91,7 +91,7 @@ evdist = ['evokedDistal_1_L2Basket', 'evokedDistal_1_L2Pyr', 'evokedDistal_1_L5B
 popColors = {'L2Basket': [0.0, 0.0, 0.0], 'L2Pyr': [0.0, 0.6, 0.0], 'L5Basket': [0.0, 0.0, 1.0], 'L5Pyr': [1.0, 0.0, 0.0],
     'Evoked proximal': [0.0, 1.0, 1.0], 'Evoked distal': [1.0, 1.0, 0.0]}
 
-cfg.analysis['iplotTraces'] = {'include': [('L5Pyr',0) ], 'oneFigPer': 'cell', 'saveFig': False, 
+cfg.analysis['iplotTraces'] = {'include': [('L5Pyr',0) ], 'oneFigPer': 'cell', 'saveFig': False,
 							  'showFig': True, 'timeRange': [0, cfg.duration]}
 
 cfg.analysis['iplotRaster'] = {'include': pops, 'showFig': True, 'popColors': popColors, 'markerSize': 6, 'orderInverse': True}
@@ -115,9 +115,9 @@ cfg.analysis['iplotConn'] = {'includePre': pops, 'includePost': pops, 'feature':
 # Network parameters
 # ----------------------------------------------------------------------------
 cfg.gridSpacingPyr = 1  # 50
-cfg.gridSpacingBasket = [1, 1, 3]  
+cfg.gridSpacingBasket = [1, 1, 3]
 cfg.xzScaling = 1 #100
-cfg.sizeY = 2000 
+cfg.sizeY = 2000
 
 cfg.localConn = True
 cfg.rhythmicInputs = True
@@ -467,10 +467,10 @@ cellParams['L2Pyr'] = {
             'basal': ['basal_1', 'basal_2', 'basal_3']},
         'secs': {
             'soma': {
-                'geom': {'L': cfg.L2Pyr_soma_L, 
-                        'Ra': cfg.L2Pyr_soma_Ra, 
-                        'cm': cfg.L2Pyr_soma_cm, 
-                        'diam': cfg.L2Pyr_soma_diam, 
+                'geom': {'L': cfg.L2Pyr_soma_L,
+                        'Ra': cfg.L2Pyr_soma_Ra,
+                        'cm': cfg.L2Pyr_soma_cm,
+                        'diam': cfg.L2Pyr_soma_diam,
                         'nseg': 1,
                     'pt3d': [[0.0, 0.0, 0.0, cfg.L2Pyr_soma_diam],
                         [0.0, 0.0+cfg.L2Pyr_soma_L, 0.0, cfg.L2Pyr_soma_diam]]},
@@ -480,18 +480,18 @@ cellParams['L2Pyr'] = {
                 },
                 'mechs': {
                     'dipole': {},
-                    'hh2': {'el': cfg.L2Pyr_soma_el_hh2, 
-                            'gkbar': cfg.L2Pyr_soma_gkbar_hh2, 
-                            'gl': cfg.L2Pyr_soma_gl_hh2, 
+                    'hh2': {'el': cfg.L2Pyr_soma_el_hh2,
+                            'gkbar': cfg.L2Pyr_soma_gkbar_hh2,
+                            'gl': cfg.L2Pyr_soma_gl_hh2,
                             'gnabar': cfg.L2Pyr_soma_gnabar_hh2},
                     'km': {'gbar': cfg.L2Pyr_soma_gbar_km}},
                 'topol': {}
             },
             'apical_1': {
-                'geom': {'L': cfg.L2Pyr_apical1_L, 
-                        'Ra': cfg.L2Pyr_dend_Ra, 
-                        'cm': cfg.L2Pyr_dend_cm, 
-                        'diam': cfg.L2Pyr_apical1_diam, 
+                'geom': {'L': cfg.L2Pyr_apical1_L,
+                        'Ra': cfg.L2Pyr_dend_Ra,
+                        'cm': cfg.L2Pyr_dend_cm,
+                        'diam': cfg.L2Pyr_apical1_diam,
                         'nseg': 7,
                     'pt3d': [
                         [0.0, 48.0, 0.0, cfg.L2Pyr_apical1_diam],
@@ -499,20 +499,20 @@ cellParams['L2Pyr'] = {
                 'topol': {'childX': 0.0, 'parentSec': 'apical_trunk', 'parentX': 1.0}
             },
             'apical_oblique': {
-                'geom': {'L': cfg.L2Pyr_apicaloblique_L, 
-                        'Ra': cfg.L2Pyr_dend_Ra, 
-                        'cm': cfg.L2Pyr_dend_cm, 
-                        'diam': cfg.L2Pyr_apicaloblique_diam, 
+                'geom': {'L': cfg.L2Pyr_apicaloblique_L,
+                        'Ra': cfg.L2Pyr_dend_Ra,
+                        'cm': cfg.L2Pyr_dend_cm,
+                        'diam': cfg.L2Pyr_apicaloblique_diam,
                         'nseg': 7,
                     'pt3d': [[0.0, 48.0, 0.0, cfg.L2Pyr_apicaloblique_diam],
                         [0.0-cfg.L2Pyr_apicaloblique_L, 48.0, 0.0, cfg.L2Pyr_apicaloblique_diam]]},
                 'topol': {'childX': 0.0, 'parentSec': 'apical_trunk', 'parentX': 1.0}
             },
             'apical_trunk': {
-                'geom': {'L': cfg.L2Pyr_apicaltrunk_L, 
-                        'Ra': cfg.L2Pyr_dend_Ra, 
-                        'cm': cfg.L2Pyr_dend_cm, 
-                        'diam': cfg.L2Pyr_apicaltrunk_diam, 
+                'geom': {'L': cfg.L2Pyr_apicaltrunk_L,
+                        'Ra': cfg.L2Pyr_dend_Ra,
+                        'cm': cfg.L2Pyr_dend_cm,
+                        'diam': cfg.L2Pyr_apicaltrunk_diam,
                         'nseg': 1,
                     'pt3d': [
                         [0.0, 13.0, 0.0, cfg.L2Pyr_apicaltrunk_diam],
@@ -520,20 +520,20 @@ cellParams['L2Pyr'] = {
                 'topol': {'childX': 0.0, 'parentSec': 'soma', 'parentX': 1.0}
             },
             'apical_tuft': {
-                'geom': {'L': cfg.L2Pyr_apicaltuft_L, 
-                        'Ra': cfg.L2Pyr_dend_Ra, 
-                        'cm': cfg.L2Pyr_dend_cm, 
-                        'diam': cfg.L2Pyr_apicaltuft_diam, 
+                'geom': {'L': cfg.L2Pyr_apicaltuft_L,
+                        'Ra': cfg.L2Pyr_dend_Ra,
+                        'cm': cfg.L2Pyr_dend_cm,
+                        'diam': cfg.L2Pyr_apicaltuft_diam,
                         'nseg': 5,
                     'pt3d': [[0.0, 228.0, 0.0, cfg.L2Pyr_apicaltuft_diam],
                         [0.0, 228.0+cfg.L2Pyr_apicaltuft_L, 0.0, cfg.L2Pyr_apicaltuft_diam]]},
                 'topol': {'childX': 0.0, 'parentSec': 'apical_1', 'parentX': 1.0}
             },
             'basal_1': {
-                'geom': {'L': cfg.L2Pyr_basal1_L, 
-                        'Ra': cfg.L2Pyr_dend_Ra, 
-                        'cm': cfg.L2Pyr_dend_cm, 
-                        'diam': cfg.L2Pyr_basal1_diam, 
+                'geom': {'L': cfg.L2Pyr_basal1_L,
+                        'Ra': cfg.L2Pyr_dend_Ra,
+                        'cm': cfg.L2Pyr_dend_cm,
+                        'diam': cfg.L2Pyr_basal1_diam,
                         'nseg': 1,
                     'pt3d': [[0.0, 0.0, 0.0, cfg.L2Pyr_basal1_diam],
                         [0.0, 0.0-cfg.L2Pyr_basal1_L, 0.0, cfg.L2Pyr_basal1_diam]]},
@@ -541,20 +541,20 @@ cellParams['L2Pyr'] = {
             },
             'basal_2': {
                 'geom': {
-                    'L': cfg.L2Pyr_basal2_L, 
-                            'Ra': cfg.L2Pyr_dend_Ra, 
-                            'cm': cfg.L2Pyr_dend_cm, 
-                            'diam': cfg.L2Pyr_basal2_diam, 
+                    'L': cfg.L2Pyr_basal2_L,
+                            'Ra': cfg.L2Pyr_dend_Ra,
+                            'cm': cfg.L2Pyr_dend_cm,
+                            'diam': cfg.L2Pyr_basal2_diam,
                             'nseg': 5,
                     'pt3d': [[0.0, -50.0, 0.0, cfg.L2Pyr_basal2_diam],
                         [0.0-cfg.L2Pyr_basal2_L/np.sqrt(2), -50.0-cfg.L2Pyr_basal2_L/np.sqrt(2), 0.0, cfg.L2Pyr_basal2_diam]]},
                 'topol': {'childX': 0.0, 'parentSec': 'basal_1', 'parentX': 1.0}
             },
             'basal_3': {
-                'geom': {'L': cfg.L2Pyr_basal3_L, 
-                        'Ra': cfg.L2Pyr_dend_Ra, 
-                        'cm': cfg.L2Pyr_dend_cm, 
-                        'diam': cfg.L2Pyr_basal3_diam, 
+                'geom': {'L': cfg.L2Pyr_basal3_L,
+                        'Ra': cfg.L2Pyr_dend_Ra,
+                        'cm': cfg.L2Pyr_dend_cm,
+                        'diam': cfg.L2Pyr_basal3_diam,
                         'nseg': 5,
                     'pt3d': [[0.0, -50.0, 0.0, cfg.L2Pyr_basal3_diam],
                         [float(0.0+cfg.L2Pyr_basal3_L/np.sqrt(2)), float(-50.0-cfg.L2Pyr_basal3_L/np.sqrt(2)), 0.0, cfg.L2Pyr_basal3_diam]]},
@@ -568,12 +568,12 @@ for sec in [sec for secName, sec in cellParams['L2Pyr']['secs'].items() if secNa
     sec['ions'] = {
         'k': {'e': -77.0, 'i': 54.4, 'o': 2.5},
         'na': {'e': 50.0, 'i': 10.0, 'o': 140.0}}
-    
+
     sec['mechs'] = {
         'dipole': {},
-        'hh2': {'el': cfg.L2Pyr_dend_el_hh2, 
-                'gkbar': cfg.L2Pyr_dend_gkbar_hh2, 
-                'gl': cfg.L2Pyr_dend_gl_hh2, 
+        'hh2': {'el': cfg.L2Pyr_dend_el_hh2,
+                'gkbar': cfg.L2Pyr_dend_gkbar_hh2,
+                'gl': cfg.L2Pyr_dend_gl_hh2,
                 'gnabar': cfg.L2Pyr_dend_gnabar_hh2},
         'km': {'gbar': cfg.L2Pyr_dend_gbar_km}}
 
@@ -588,18 +588,18 @@ for sec in cellParams['L2Pyr']['secs'].values():
 cellParams['L2Basket'] = {
         'secs': {
             'soma': {
-                'geom': {'L': 39.0, 
-                        'Ra': 200.0, 
-                        'cm': 0.85, 
-                        'diam': 20.0, 
+                'geom': {'L': 39.0,
+                        'Ra': 200.0,
+                        'cm': 0.85,
+                        'diam': 20.0,
                         'nseg': 1},
                 'ions': {
                     'k': {'e': -77.0, 'i': 54.4, 'o': 2.5},
                     'na': {'e': 50.0, 'i': 10.0,'o': 140.0}},
                 'mechs': {
-                    'hh2': {'el': -54.3, 
-                            'gkbar': 0.036, 
-                            'gl': 0.0003, 
+                    'hh2': {'el': -54.3,
+                            'gkbar': 0.036,
+                            'gl': 0.0003,
                             'gnabar': 0.12}},
                 'topol': {}
         }}}
@@ -618,10 +618,10 @@ cellParams['L5Pyr'] = {
             'basal': ['basal_1', 'basal_2', 'basal_3']},
         'secs': {
             'soma': {
-                'geom': {'L': cfg.L5Pyr_soma_L, 
-                        'Ra': cfg.L5Pyr_soma_Ra, 
-                        'cm': cfg.L5Pyr_soma_cm, 
-                        'diam': cfg.L5Pyr_soma_diam, 
+                'geom': {'L': cfg.L5Pyr_soma_L,
+                        'Ra': cfg.L5Pyr_soma_Ra,
+                        'cm': cfg.L5Pyr_soma_cm,
+                        'diam': cfg.L5Pyr_soma_diam,
                         'nseg': 1,
                     'pt3d': [[0.0, 0.0, 0.0, cfg.L5Pyr_soma_diam],
                         [0.0, 0.0+cfg.L5Pyr_soma_L, 0.0, cfg.L5Pyr_soma_diam]]},
@@ -630,94 +630,94 @@ cellParams['L5Pyr'] = {
                     'k': {'e': -77.0, 'i': 54.4, 'o': 2.5},
                     'na': {'e': 50.0, 'i': 10.0, 'o': 140.0}},
                 'mechs': {
-                    'ar_hnn': {'gbar': cfg.L5Pyr_soma_gbar_ar}, 
+                    'ar_hnn': {'gbar': cfg.L5Pyr_soma_gbar_ar},
                     'ca_hnn': {'gbar': cfg.L5Pyr_soma_gbar_ca},
                     'cad': {'taur': cfg.L5Pyr_soma_taur_cad},
                     'cat_hnn': {'gbar': cfg.L5Pyr_soma_gbar_cat},
                     'dipole': {},
-                    'hh2': {'el': cfg.L5Pyr_soma_el_hh2, 
-                            'gkbar': cfg.L5Pyr_soma_gkbar_hh2, 
-                            'gl': cfg.L5Pyr_soma_gl_hh2, 
+                    'hh2': {'el': cfg.L5Pyr_soma_el_hh2,
+                            'gkbar': cfg.L5Pyr_soma_gkbar_hh2,
+                            'gl': cfg.L5Pyr_soma_gl_hh2,
                             'gnabar': cfg.L5Pyr_soma_gnabar_hh2},
                     'kca': {'gbar': cfg.L5Pyr_soma_gbar_kca},
                     'km': {'gbar': cfg.L5Pyr_soma_gbar_km}},
                 'topol': {}
             },
             'apical_1': {
-                'geom': {'L': cfg.L5Pyr_apical1_L, 
-                        'Ra': cfg.L5Pyr_dend_Ra, 
-                        'cm': cfg.L5Pyr_dend_cm, 
-                        'diam': cfg.L5Pyr_apical1_diam, 
+                'geom': {'L': cfg.L5Pyr_apical1_L,
+                        'Ra': cfg.L5Pyr_dend_Ra,
+                        'cm': cfg.L5Pyr_dend_cm,
+                        'diam': cfg.L5Pyr_apical1_diam,
                         'nseg': 13,
                     'pt3d': [[0.0, 83.0, 0.0, cfg.L5Pyr_apical1_diam],
                         [0.0, 83.0+cfg.L5Pyr_apical1_L, 0.0, cfg.L5Pyr_apical1_diam]]},
                 'topol': {'childX': 0.0, 'parentSec': 'apical_trunk','parentX': 1.0}
             },
             'apical_2': {
-                'geom': {'L': cfg.L5Pyr_apical2_L, 
-                        'Ra': cfg.L5Pyr_dend_Ra, 
-                        'cm': cfg.L5Pyr_dend_cm, 
-                        'diam': cfg.L5Pyr_apical2_diam, 
+                'geom': {'L': cfg.L5Pyr_apical2_L,
+                        'Ra': cfg.L5Pyr_dend_Ra,
+                        'cm': cfg.L5Pyr_dend_cm,
+                        'diam': cfg.L5Pyr_apical2_diam,
                         'nseg': 13,
                     'pt3d': [[0.0, 483.0, 0.0, cfg.L5Pyr_apical2_diam],
                         [0.0, 483.0+cfg.L5Pyr_apical2_L, 0.0, cfg.L5Pyr_apical2_diam]]},
                 'topol': {'childX': 0.0, 'parentSec': 'apical_1', 'parentX': 1.0}
             },
             'apical_oblique': {
-                'geom': {'L': cfg.L5Pyr_apicaloblique_L, 
-                        'Ra': cfg.L5Pyr_dend_Ra, 
-                        'cm': cfg.L5Pyr_dend_cm, 
-                        'diam': cfg.L5Pyr_apicaloblique_diam, 
+                'geom': {'L': cfg.L5Pyr_apicaloblique_L,
+                        'Ra': cfg.L5Pyr_dend_Ra,
+                        'cm': cfg.L5Pyr_dend_cm,
+                        'diam': cfg.L5Pyr_apicaloblique_diam,
                         'nseg': 5,
                     'pt3d': [[0.0, 83.0, 0.0, cfg.L5Pyr_apicaloblique_diam],
                         [0.0-cfg.L5Pyr_apicaloblique_L, 83.0, 0.0, cfg.L5Pyr_apicaloblique_diam]]},
                 'topol': {'childX': 0.0, 'parentSec': 'apical_trunk', 'parentX': 1.0}
             },
             'apical_trunk': {
-                'geom': {'L': cfg.L5Pyr_apicaltrunk_L, 
-                        'Ra': cfg.L5Pyr_dend_Ra, 
-                        'cm': cfg.L5Pyr_dend_cm, 
-                        'diam': cfg.L5Pyr_apicaltrunk_diam, 
+                'geom': {'L': cfg.L5Pyr_apicaltrunk_L,
+                        'Ra': cfg.L5Pyr_dend_Ra,
+                        'cm': cfg.L5Pyr_dend_cm,
+                        'diam': cfg.L5Pyr_apicaltrunk_diam,
                         'nseg': 3,
                     'pt3d': [[0.0, 23.0, 0.0, cfg.L5Pyr_apicaltrunk_diam ],
                         [0.0, 23.0+cfg.L5Pyr_apicaltrunk_L, 0.0, cfg.L5Pyr_apicaltrunk_diam]]},
                 'topol': {'childX': 0.0, 'parentSec': 'soma', 'parentX': 1.0}
             },
             'apical_tuft': {
-                'geom': {'L': cfg.L5Pyr_apicaltuft_L, 
-                        'Ra': cfg.L5Pyr_dend_Ra, 
-                        'cm': cfg.L5Pyr_dend_cm, 
-                        'diam': cfg.L5Pyr_apicaltuft_diam, 
+                'geom': {'L': cfg.L5Pyr_apicaltuft_L,
+                        'Ra': cfg.L5Pyr_dend_Ra,
+                        'cm': cfg.L5Pyr_dend_cm,
+                        'diam': cfg.L5Pyr_apicaltuft_diam,
                         'nseg': 9,
                     'pt3d': [[0.0, 883.0, 0.0, cfg.L5Pyr_apicaltuft_diam],
                         [0.0, 883.0+cfg.L5Pyr_apicaltuft_L, 0.0, cfg.L5Pyr_apicaltuft_diam]]},
                 'topol': {'childX': 0.0, 'parentSec': 'apical_2', 'parentX': 1.0}
             },
             'basal_1': {
-                'geom': {'L': cfg.L5Pyr_basal1_L, 
-                        'Ra': cfg.L5Pyr_dend_Ra, 
-                        'cm': cfg.L5Pyr_dend_cm, 
-                        'diam': cfg.L5Pyr_basal1_diam, 
+                'geom': {'L': cfg.L5Pyr_basal1_L,
+                        'Ra': cfg.L5Pyr_dend_Ra,
+                        'cm': cfg.L5Pyr_dend_cm,
+                        'diam': cfg.L5Pyr_basal1_diam,
                         'nseg': 1,
                     'pt3d': [[0.0, 0.0, 0.0, cfg.L5Pyr_basal1_diam],
                         [0.0, 0.0-cfg.L5Pyr_basal1_L, 0.0, cfg.L5Pyr_basal1_diam]]},
                 'topol': {'childX': 0.0, 'parentSec': 'soma', 'parentX': 0.0}
             },
             'basal_2': {
-                'geom': {'L': cfg.L5Pyr_basal2_L, 
-                        'Ra': cfg.L5Pyr_dend_Ra, 
-                        'cm': cfg.L5Pyr_dend_cm, 
-                        'diam': cfg.L5Pyr_basal2_diam, 
+                'geom': {'L': cfg.L5Pyr_basal2_L,
+                        'Ra': cfg.L5Pyr_dend_Ra,
+                        'cm': cfg.L5Pyr_dend_cm,
+                        'diam': cfg.L5Pyr_basal2_diam,
                         'nseg': 5,
                     'pt3d': [[0.0, -50.0, 0.0, cfg.L5Pyr_basal2_diam],
                         [float(0.0-cfg.L5Pyr_basal2_L/np.sqrt(2)), float(-50-cfg.L5Pyr_basal2_L/np.sqrt(2)), 0.0, cfg.L5Pyr_basal2_diam]]},
                 'topol': {'childX': 0.0, 'parentSec': 'basal_1', 'parentX': 1.0}
             },
             'basal_3': {
-                'geom': {'L': cfg.L5Pyr_basal3_L, 
-                        'Ra': cfg.L5Pyr_dend_Ra, 
-                        'cm': cfg.L5Pyr_dend_cm, 
-                        'diam': cfg.L5Pyr_basal3_diam, 
+                'geom': {'L': cfg.L5Pyr_basal3_L,
+                        'Ra': cfg.L5Pyr_dend_Ra,
+                        'cm': cfg.L5Pyr_dend_cm,
+                        'diam': cfg.L5Pyr_basal3_diam,
                         'nseg': 5,
                     'pt3d': [[0.0, -50.0, 0.0, cfg.L5Pyr_basal3_diam],
                         [float(0.0+cfg.L5Pyr_basal2_L/np.sqrt(2)), float(-50-cfg.L5Pyr_basal2_L/np.sqrt(2)), 0.0, cfg.L5Pyr_basal3_diam]]},
@@ -749,17 +749,17 @@ for secName, sec in [(secName, sec) for secName, sec in cellParams['L5Pyr']['sec
 
     L = sec['geom']['L']
     nseg = sec['geom']['nseg']
-    
+
     sec['mechs'] = {
-        # gbar_ar value depends of distance from soma 
-        'ar_hnn': {'gbar': gbar_ar[secName]}, #[1e-6*np.exp(3e-3 * ((L/nseg)*i+(L/nseg)/2)) for i in range(nseg)]}, 
+        # gbar_ar value depends of distance from soma
+        'ar_hnn': {'gbar': gbar_ar[secName]}, #[1e-6*np.exp(3e-3 * ((L/nseg)*i+(L/nseg)/2)) for i in range(nseg)]},
         'ca_hnn': {'gbar': cfg.L5Pyr_dend_gbar_ca},
         'cad': {'taur': cfg.L5Pyr_dend_taur_cad},
         'cat_hnn': {'gbar': cfg.L5Pyr_dend_gbar_cat},
         'dipole': {},
-        'hh2': {'el': cfg.L5Pyr_dend_el_hh2, 
-                'gkbar': cfg.L5Pyr_dend_gkbar_hh2, 
-                'gl': cfg.L5Pyr_dend_gl_hh2, 
+        'hh2': {'el': cfg.L5Pyr_dend_el_hh2,
+                'gkbar': cfg.L5Pyr_dend_gkbar_hh2,
+                'gl': cfg.L5Pyr_dend_gl_hh2,
                 'gnabar': cfg.L5Pyr_dend_gnabar_hh2},
         'kca': {'gbar': cfg.L5Pyr_dend_gbar_kca},
         'km': {'gbar': cfg.L5Pyr_dend_gbar_km}}
@@ -782,18 +782,18 @@ for secName,sec in cellParams['L5Pyr']['secs'].items():
 cellParams['L5Basket'] = {
         'secs': {
             'soma': {
-                'geom': {'L': 39.0, 
-                        'Ra': 200.0, 
-                        'cm': 0.85, 
-                        'diam': 20.0, 
+                'geom': {'L': 39.0,
+                        'Ra': 200.0,
+                        'cm': 0.85,
+                        'diam': 20.0,
                         'nseg': 1},
                 'ions': {
                     'k': {'e': -77.0, 'i': 54.4, 'o': 2.5},
                     'na': {'e': 50.0, 'i': 10.0,'o': 140.0}},
                 'mechs': {
-                    'hh2': {'el': -54.3, 
-                            'gkbar': 0.036, 
-                            'gl': 0.0003, 
+                    'hh2': {'el': -54.3,
+                            'gkbar': 0.036,
+                            'gl': 0.0003,
                             'gnabar': 0.12}},
                 'topol': {}
         }}}
@@ -823,9 +823,9 @@ netParams.sizeY = cfg.sizeY # y-dimension (vertical height or cortical depth) si
 netParams.sizeZ = ((cfg.N_pyr_y * cfg.gridSpacingPyr) - 1) * cfg.xzScaling # z-dimension (horizontal depth) size in um
 netParams.shape = 'cuboid'
 
-netParams.cellsVisualizationSpacingMultiplierX = 50 
+netParams.cellsVisualizationSpacingMultiplierX = 50
 netParams.cellsVisualizationSpacingMultiplierY = 1
-netParams.cellsVisualizationSpacingMultiplierZ = 50 
+netParams.cellsVisualizationSpacingMultiplierZ = 50
 
 
 # ----------------------------------------------------------------------------
@@ -841,7 +841,7 @@ netParams.cellParams = cellParams
 layersE = {'L2': [0.0*cfg.sizeY, 0.0*cfg.sizeY], 'L5': [0.654*cfg.sizeY, 0.654*cfg.sizeY]} # 0.654 = 1308/2000
 layersI = {'L2': [0.0*cfg.sizeY-00.0, 0.0*cfg.sizeY-00.0], 'L5': [0.654*cfg.sizeY-00.0, 0.654*cfg.sizeY-00.0]}
 
-# Create list of locations for Basket cells based on original ad hoc rules 
+# Create list of locations for Basket cells based on original ad hoc rules
 # define relevant x spacings for basket cells
 xzero = np.arange(0, cfg.N_pyr_x, 3)
 xone = np.arange(1, cfg.N_pyr_x, 3)
@@ -853,10 +853,10 @@ L2BasketLocs = [{'x': int(coord[0]*cfg.xzScaling), 'y': int(layersI['L2'][0]), '
 L5BasketLocs = [{'x': int(coord[0]*cfg.xzScaling), 'y': int(layersI['L5'][0]), 'z': int(coord[1]*cfg.xzScaling)} for coord in coords_sorted]
 
 # create popParams
-netParams.popParams['L2Basket'] = {'cellType':  'L2Basket', 'cellModel': 'HH_simple', 'numCells': len(L2BasketLocs), 'cellsList': L2BasketLocs} 
-netParams.popParams['L2Pyr'] =    {'cellType':  'L2Pyr',    'cellModel': 'HH_reduced', 'yRange': layersE['L2'],  'gridSpacing': cfg.gridSpacingPyr*cfg.xzScaling} 
-netParams.popParams['L5Basket'] = {'cellType':  'L5Basket', 'cellModel': 'HH_simple',  'numCells': len(L5BasketLocs), 'cellsList': L5BasketLocs} 
-netParams.popParams['L5Pyr'] =    {'cellType':  'L5Pyr',    'cellModel': 'HH_reduced', 'yRange': layersE['L5'],  'gridSpacing': cfg.gridSpacingPyr*cfg.xzScaling} 
+netParams.popParams['L2Basket'] = {'cellType':  'L2Basket', 'cellModel': 'HH_simple', 'numCells': len(L2BasketLocs), 'cellsList': L2BasketLocs}
+netParams.popParams['L2Pyr'] =    {'cellType':  'L2Pyr',    'cellModel': 'HH_reduced', 'yRange': layersE['L2'],  'gridSpacing': cfg.gridSpacingPyr*cfg.xzScaling}
+netParams.popParams['L5Basket'] = {'cellType':  'L5Basket', 'cellModel': 'HH_simple',  'numCells': len(L5BasketLocs), 'cellsList': L5BasketLocs}
+netParams.popParams['L5Pyr'] =    {'cellType':  'L5Pyr',    'cellModel': 'HH_reduced', 'yRange': layersE['L5'],  'gridSpacing': cfg.gridSpacingPyr*cfg.xzScaling}
 
 # create variables useful for connectivity
 pops = list(netParams.popParams.keys())
@@ -886,7 +886,7 @@ netParams.synMechParams['GABAB'] = {'mod':'Exp2Syn', 'tau1': 1, 'tau2': 20, 'e':
 
 
 #------------------------------------------------------------------------------
-# Local connectivity parameters 
+# Local connectivity parameters
 #------------------------------------------------------------------------------
 
 # Weight and delay distance-dependent functions (as strings) to use in conn rules
@@ -907,15 +907,15 @@ if cfg.localConn:
                 'lamtha': 3.}]
 
     for i,synParams in enumerate(synParamsList):
-        netParams.connParams['L2Pyr->L2Pyr_%d'%(i)] = { 
-            'preConds': {'pop': 'L2Pyr'}, 
+        netParams.connParams['L2Pyr->L2Pyr_%d'%(i)] = {
+            'preConds': {'pop': 'L2Pyr'},
             'postConds': {'pop': 'L2Pyr'},
             'synMech': synParams['synMech'],
             'weight': weightDistFunc.format(**synParams), # equivalent to weightDistFunc.format(A_weight=cfg.gbar_L2Pyr_L2Pyr_ampa, lamtha=1.)
             'delay': delayDistFunc.format(**synParams),
             'synsPerConn': 3,
             'sec': ['basal_2', 'basal_3','apical_oblique', ]}
-                    
+
 
     # L2 Basket -> L2 Pyr
     synParamsList = [{'synMech': 'L2Pyr_GABAA',
@@ -929,8 +929,8 @@ if cfg.localConn:
                 'lamtha': 50.}]
 
     for i,synParams in enumerate(synParamsList):
-        netParams.connParams['L2Basket->L2Pyr_%d'%(i)] = { 
-            'preConds': {'pop': 'L2Basket'}, 
+        netParams.connParams['L2Basket->L2Pyr_%d'%(i)] = {
+            'preConds': {'pop': 'L2Basket'},
             'postConds': {'pop': 'L2Pyr'},
             'synMech': synParams['synMech'],
             'weight': weightDistFunc.format(**synParams),
@@ -939,14 +939,14 @@ if cfg.localConn:
             'sec': ['soma']}
 
 
-    # L2 Pyr -> L2 Basket 
+    # L2 Pyr -> L2 Basket
     synParams = {'synMech': 'AMPA',
                 'A_weight': cfg.EIgain * cfg.gbar_L2Pyr_L2Basket,
                 'A_delay': 1.,
                 'lamtha': 3.}
 
-    netParams.connParams['L2Pyr->L2Basket_%s'%(synParams['synMech'])] = { 
-        'preConds': {'pop': 'L2Pyr'}, 
+    netParams.connParams['L2Pyr->L2Basket_%s'%(synParams['synMech'])] = {
+        'preConds': {'pop': 'L2Pyr'},
         'postConds': {'pop': 'L2Basket'},
         'synMech': synParams['synMech'],
         'weight': weightDistFunc.format(**synParams),
@@ -955,14 +955,14 @@ if cfg.localConn:
         'sec': ['soma']}
 
 
-    # L2 Basket -> L2 Basket 
+    # L2 Basket -> L2 Basket
     synParams = {'synMech': 'GABAA',
                 'A_weight': cfg.IIgain * cfg.gbar_L2Basket_L2Basket,
                 'A_delay': 1.,
                 'lamtha': 20.}
 
-    netParams.connParams['L2Basket->L2Basket'] = { 
-        'preConds': {'pop': 'L2Basket'}, 
+    netParams.connParams['L2Basket->L2Basket'] = {
+        'preConds': {'pop': 'L2Basket'},
         'postConds': {'pop': 'L2Basket'},
         'synMech': synParams['synMech'],
         'weight': weightDistFunc.format(**synParams),
@@ -983,15 +983,15 @@ if cfg.localConn:
                 'lamtha': 3.}]
 
     for i,synParams in enumerate(synParamsList):
-        netParams.connParams['L5Pyr->L5Pyr_%d'%(i)] = { 
-            'preConds': {'pop': 'L5Pyr'}, 
+        netParams.connParams['L5Pyr->L5Pyr_%d'%(i)] = {
+            'preConds': {'pop': 'L5Pyr'},
             'postConds': {'pop': 'L5Pyr'},
             'synMech': synParams['synMech'],
             'weight': weightDistFunc.format(**synParams),
             'delay': delayDistFunc.format(**synParams),
             'synsPerConn': 3,
             'sec': ['basal_2', 'basal_3', 'apical_oblique']}
-                
+
 
     # L5 Basket -> L5 Pyr
     synParamsList = [{'synMech': 'L5Pyr_GABAA',
@@ -1005,8 +1005,8 @@ if cfg.localConn:
                 'lamtha': 70.}]
 
     for i,synParams in enumerate(synParamsList):
-        netParams.connParams['L5Basket->L5Pyr_%d'%(i)] = { 
-            'preConds': {'pop': 'L5Basket'}, 
+        netParams.connParams['L5Basket->L5Pyr_%d'%(i)] = {
+            'preConds': {'pop': 'L5Basket'},
             'postConds': {'pop': 'L5Pyr'},
             'synMech': synParams['synMech'],
             'weight': weightDistFunc.format(**synParams),
@@ -1021,15 +1021,15 @@ if cfg.localConn:
                 'A_delay': 1.,
                 'lamtha': 3.}
 
-    netParams.connParams['L2Pyr->L5Pyr'] = { 
-        'preConds': {'pop': 'L2Pyr'}, 
+    netParams.connParams['L2Pyr->L5Pyr'] = {
+        'preConds': {'pop': 'L2Pyr'},
         'postConds': {'pop': 'L5Pyr'},
         'synMech': synParams['synMech'],
         'weight': weightDistFunc.format(**synParams),
         'delay': delayDistFunc.format(**synParams),
         'synsPerConn': 4,
         'sec': ['basal_2', 'basal_3', 'apical_tuft', 'apical_oblique']}
-                
+
 
     # L2 Basket -> L5 Pyr
     synParams = {'synMech': 'L5Pyr_GABAA',
@@ -1037,24 +1037,24 @@ if cfg.localConn:
                 'A_delay': 1.,
                 'lamtha': 50.}
 
-    netParams.connParams['L2Basket->L5Pyr'] = { 
-        'preConds': {'pop': 'L2Basket'}, 
+    netParams.connParams['L2Basket->L5Pyr'] = {
+        'preConds': {'pop': 'L2Basket'},
         'postConds': {'pop': 'L5Pyr'},
         'synMech': synParams['synMech'],
         'weight': weightDistFunc.format(**synParams),
         'delay': delayDistFunc.format(**synParams),
         'synsPerConn': 1,
         'sec': ['apical_tuft']}
-        
 
-    # L5 Pyr -> L5 Basket 
+
+    # L5 Pyr -> L5 Basket
     synParams = {'synMech': 'AMPA',
                 'A_weight': cfg.EIgain * cfg.gbar_L5Pyr_L5Basket,
                 'A_delay': 1.,
                 'lamtha': 3.}
 
-    netParams.connParams['L5Pyr->L5Basket'] = { 
-        'preConds': {'pop': 'L5Pyr'}, 
+    netParams.connParams['L5Pyr->L5Basket'] = {
+        'preConds': {'pop': 'L5Pyr'},
         'postConds': {'pop': 'L5Basket'},
         'synMech': synParams['synMech'],
         'weight': weightDistFunc.format(**synParams),
@@ -1063,14 +1063,14 @@ if cfg.localConn:
         'sec': ['soma']}
 
 
-    # L2 Pyr -> L5 Basket 
+    # L2 Pyr -> L5 Basket
     synParams = {'synMech': 'AMPA',
                 'A_weight': cfg.EIgain * cfg.gbar_L2Pyr_L5Basket,
                 'A_delay': 1.,
                 'lamtha': 3.}
 
-    netParams.connParams['L2Pyr->L5Basket'] = { 
-        'preConds': {'pop': 'L2Pyr'}, 
+    netParams.connParams['L2Pyr->L5Basket'] = {
+        'preConds': {'pop': 'L2Pyr'},
         'postConds': {'pop': 'L5Basket'},
         'synMech': synParams['synMech'],
         'weight': weightDistFunc.format(**synParams),
@@ -1079,14 +1079,14 @@ if cfg.localConn:
         'sec': ['soma']}
 
 
-    # L5 Basket -> L5 Basket 
+    # L5 Basket -> L5 Basket
     synParams = {'synMech': 'GABAA',
                 'A_weight': cfg.IIgain * cfg.gbar_L5Basket_L5Basket,
                 'A_delay': 1.,
                 'lamtha': 20.}
 
-    netParams.connParams['L5Basket->L5Basket'] = { 
-        'preConds': {'pop': 'L5Basket'}, 
+    netParams.connParams['L5Basket->L5Basket'] = {
+        'preConds': {'pop': 'L5Basket'},
         'postConds': {'pop': 'L5Basket'},
         'synMech': synParams['synMech'],
         'weight': weightDistFunc.format(**synParams),
@@ -1096,7 +1096,7 @@ if cfg.localConn:
 
 '''
 #------------------------------------------------------------------------------
-# Rhythmic proximal and distal inputs parameters 
+# Rhythmic proximal and distal inputs parameters
 #------------------------------------------------------------------------------
 
 # Location of external inputs
@@ -1135,7 +1135,7 @@ if cfg.rhythmicInputs:
             cfg.input_dist_A_delay_L5 = cfg.input_dist_A_delay_L2
         else:
             cfg.input_dist_A_delay_L5 = 1.0
-            
+
     # External Rhythmic proximal inputs (1 VecStim per cell for each cell population)
     netParams.popParams['extRhythmicProximal'] = {
         'cellModel': 'VecStim',
@@ -1188,8 +1188,8 @@ if cfg.rhythmicInputs:
                 'lamtha': 100.}]
 
     for i,synParams in enumerate(synParamsList):
-        netParams.connParams['extRhythmicProx->L2Pyr_%d'%(i)] = { 
-            'preConds': {'pop': 'extRhythmicProximal'}, 
+        netParams.connParams['extRhythmicProx->L2Pyr_%d'%(i)] = {
+            'preConds': {'pop': 'extRhythmicProximal'},
             'postConds': {'pop': 'L2Pyr'},
             'synMech': synParams['synMech'],
             'weight': weightDistFunc.format(**synParams),
@@ -1210,8 +1210,8 @@ if cfg.rhythmicInputs:
                 'lamtha': 100.}]
 
     for i,synParams in enumerate(synParamsList):
-        netParams.connParams['extRhythmicDistal->L2Pyr_%d'%(i)] = { 
-            'preConds': {'pop': 'extRhythmicDistal'}, 
+        netParams.connParams['extRhythmicDistal->L2Pyr_%d'%(i)] = {
+            'preConds': {'pop': 'extRhythmicDistal'},
             'postConds': {'pop': 'L2Pyr'},
             'synMech': synParams['synMech'],
             'weight': weightDistFunc.format(**synParams),
@@ -1232,8 +1232,8 @@ if cfg.rhythmicInputs:
                 'lamtha': 100.}]
 
     for i,synParams in enumerate(synParamsList):
-        netParams.connParams['extRhythmicProx->L5Pyr_%d'%(i)] = { 
-            'preConds': {'pop': 'extRhythmicProximal'}, 
+        netParams.connParams['extRhythmicProx->L5Pyr_%d'%(i)] = {
+            'preConds': {'pop': 'extRhythmicProximal'},
             'postConds': {'pop': 'L5Pyr'},
             'synMech': synParams['synMech'],
             'weight': weightDistFunc.format(**synParams),
@@ -1254,8 +1254,8 @@ if cfg.rhythmicInputs:
                 'lamtha': 100.}]
 
     for i,synParams in enumerate(synParamsList):
-        netParams.connParams['extRhythmicDistal->L5Pyr_%d'%(i)] = { 
-            'preConds': {'pop': 'extRhythmicDistal'}, 
+        netParams.connParams['extRhythmicDistal->L5Pyr_%d'%(i)] = {
+            'preConds': {'pop': 'extRhythmicDistal'},
             'postConds': {'pop': 'L5Pyr'},
             'synMech': synParams['synMech'],
             'weight': weightDistFunc.format(**synParams),
@@ -1276,8 +1276,8 @@ if cfg.rhythmicInputs:
                 'lamtha': 100.}]
 
     for i,synParams in enumerate(synParamsList):
-        netParams.connParams['extRhythmicProx->L2Basket_%d'%(i)] = { 
-            'preConds': {'pop': 'extRhythmicProximal'}, 
+        netParams.connParams['extRhythmicProx->L2Basket_%d'%(i)] = {
+            'preConds': {'pop': 'extRhythmicProximal'},
             'postConds': {'pop': 'L2Basket'},
             'synMech': synParams['synMech'],
             'weight': weightDistFunc.format(**synParams),
@@ -1298,8 +1298,8 @@ if cfg.rhythmicInputs:
                 'lamtha': 100.}]
 
     for i,synParams in enumerate(synParamsList):
-        netParams.connParams['extRhythmicProx->L5Basket_%d'%(i)] = { 
-            'preConds': {'pop': 'extRhythmicProximal'}, 
+        netParams.connParams['extRhythmicProx->L5Basket_%d'%(i)] = {
+            'preConds': {'pop': 'extRhythmicProximal'},
             'postConds': {'pop': 'L5Basket'},
             'synMech': synParams['synMech'],
             'weight': weightDistFunc.format(**synParams),
@@ -1309,7 +1309,7 @@ if cfg.rhythmicInputs:
 
 
 #------------------------------------------------------------------------------
-# Evoked proximal and distal inputs parameters 
+# Evoked proximal and distal inputs parameters
 #------------------------------------------------------------------------------
 
 if cfg.evokedInputs:
@@ -1349,8 +1349,8 @@ if cfg.evokedInputs:
                     'lamtha': 3.}]
 
         for i,synParams in enumerate(synParamsList):
-            netParams.connParams['evokedProx_%d->L2Pyr_%d'%(iprox+1, i)] = { 
-                'preConds': {'pop': 'evokedProximal_%d_L2Pyr'%(iprox+1)}, 
+            netParams.connParams['evokedProx_%d->L2Pyr_%d'%(iprox+1, i)] = {
+                'preConds': {'pop': 'evokedProximal_%d_L2Pyr'%(iprox+1)},
                 'postConds': {'pop': 'L2Pyr'},
                 'synMech': synParams['synMech'],
                 'weight': weightDistFunc.format(**synParams),
@@ -1371,8 +1371,8 @@ if cfg.evokedInputs:
                     'lamtha': 3.}]
 
         for i,synParams in enumerate(synParamsList):
-            netParams.connParams['evokedProx_%d->L5Pyr_%d'%(iprox+1, i)] = { 
-                'preConds': {'pop': 'evokedProximal_%d_L5Pyr'%(iprox+1)}, 
+            netParams.connParams['evokedProx_%d->L5Pyr_%d'%(iprox+1, i)] = {
+                'preConds': {'pop': 'evokedProximal_%d_L5Pyr'%(iprox+1)},
                 'postConds': {'pop': 'L5Pyr'},
                 'synMech': synParams['synMech'],
                 'weight': weightDistFunc.format(**synParams),
@@ -1393,8 +1393,8 @@ if cfg.evokedInputs:
                     'lamtha': 3.}]
 
         for i,synParams in enumerate(synParamsList):
-            netParams.connParams['evokedProx_%d->L2Basket_%d'%(iprox+1, i)] = { 
-                'preConds': {'pop': 'evokedProximal_%d_L2Basket'%(iprox+1)}, 
+            netParams.connParams['evokedProx_%d->L2Basket_%d'%(iprox+1, i)] = {
+                'preConds': {'pop': 'evokedProximal_%d_L2Basket'%(iprox+1)},
                 'postConds': {'pop': 'L2Basket'},
                 'synMech': synParams['synMech'],
                 'weight': weightDistFunc.format(**synParams),
@@ -1415,8 +1415,8 @@ if cfg.evokedInputs:
                     'lamtha': 3.}]
 
         for i,synParams in enumerate(synParamsList):
-            netParams.connParams['evokedProx_%d->L5Basket_%d'%(iprox+1, i)] = { 
-                'preConds': {'pop': 'evokedProximal_%d_L5Basket'%(iprox+1)}, 
+            netParams.connParams['evokedProx_%d->L5Basket_%d'%(iprox+1, i)] = {
+                'preConds': {'pop': 'evokedProximal_%d_L5Basket'%(iprox+1)},
                 'postConds': {'pop': 'L5Basket'},
                 'synMech': synParams['synMech'],
                 'weight': weightDistFunc.format(**synParams),
@@ -1457,8 +1457,8 @@ if cfg.evokedInputs:
                     'lamtha': 3.}]
 
         for i,synParams in enumerate(synParamsList):
-            netParams.connParams['evokedDistal_%d->L2Pyr_%d'%(idist+1, i)] = { 
-                'preConds': {'pop': 'evokedDistal_%d_L2Pyr'%(idist+1)}, 
+            netParams.connParams['evokedDistal_%d->L2Pyr_%d'%(idist+1, i)] = {
+                'preConds': {'pop': 'evokedDistal_%d_L2Pyr'%(idist+1)},
                 'postConds': {'pop': 'L2Pyr'},
                 'synMech': synParams['synMech'],
                 'weight': weightDistFunc.format(**synParams),
@@ -1479,8 +1479,8 @@ if cfg.evokedInputs:
                     'lamtha': 3.}]
 
         for i,synParams in enumerate(synParamsList):
-            netParams.connParams['evokedDistal_%d->L5Pyr_%d'%(idist+1, i)] = { 
-                'preConds': {'pop': 'evokedDistal_%d_L5Pyr'%(idist+1)}, 
+            netParams.connParams['evokedDistal_%d->L5Pyr_%d'%(idist+1, i)] = {
+                'preConds': {'pop': 'evokedDistal_%d_L5Pyr'%(idist+1)},
                 'postConds': {'pop': 'L5Pyr'},
                 'synMech': synParams['synMech'],
                 'weight': weightDistFunc.format(**synParams),
@@ -1501,8 +1501,8 @@ if cfg.evokedInputs:
                     'lamtha': 3.}]
 
         for i,synParams in enumerate(synParamsList):
-            netParams.connParams['evokedDistal_%d->L2Basket_%d'%(idist+1, i)] = { 
-                'preConds': {'pop': 'evokedDistal_%d_L2Basket'%(idist+1)}, 
+            netParams.connParams['evokedDistal_%d->L2Basket_%d'%(idist+1, i)] = {
+                'preConds': {'pop': 'evokedDistal_%d_L2Basket'%(idist+1)},
                 'postConds': {'pop': 'L2Basket'},
                 'synMech': synParams['synMech'],
                 'weight': weightDistFunc.format(**synParams),
@@ -1513,7 +1513,7 @@ if cfg.evokedInputs:
 
 
 #------------------------------------------------------------------------------
-# Tonic input parameters 
+# Tonic input parameters
 #------------------------------------------------------------------------------
 
 if cfg.tonicInputs:
@@ -1559,7 +1559,7 @@ if cfg.tonicInputs:
 
 
 #------------------------------------------------------------------------------
-# Poisson-distributed input parameters 
+# Poisson-distributed input parameters
 #------------------------------------------------------------------------------
 
 if cfg.poissonInputs:
@@ -1589,8 +1589,8 @@ if cfg.poissonInputs:
                 'lamtha': 100.}]
 
     for i,synParams in enumerate(synParamsList):
-        netParams.connParams['extPoisson->L2Pyr_%d'%(i)] = { 
-            'preConds': {'pop': 'extPoisson_L2Pyr'}, 
+        netParams.connParams['extPoisson->L2Pyr_%d'%(i)] = {
+            'preConds': {'pop': 'extPoisson_L2Pyr'},
             'postConds': {'pop': 'L2Pyr'},
             'synMech': synParams['synMech'],
             'weight': weightDistFunc.format(**synParams),
@@ -1625,8 +1625,8 @@ if cfg.poissonInputs:
                 'lamtha': 100.}]
 
     for i,synParams in enumerate(synParamsList):
-        netParams.connParams['extPoisson->L5Pyr_%d'%(i)] = { 
-            'preConds': {'pop': 'extPoisson_L5Pyr'}, 
+        netParams.connParams['extPoisson->L5Pyr_%d'%(i)] = {
+            'preConds': {'pop': 'extPoisson_L5Pyr'},
             'postConds': {'pop': 'L5Pyr'},
             'synMech': synParams['synMech'],
             'weight': weightDistFunc.format(**synParams),
@@ -1661,8 +1661,8 @@ if cfg.poissonInputs:
                 'lamtha': 100.}]
 
     for i,synParams in enumerate(synParamsList):
-        netParams.connParams['extPoisson->L2Basket_%d'%(i)] = { 
-            'preConds': {'pop': 'extPoisson_L2Basket'}, 
+        netParams.connParams['extPoisson->L2Basket_%d'%(i)] = {
+            'preConds': {'pop': 'extPoisson_L2Basket'},
             'postConds': {'pop': 'L2Basket'},
             'synMech': synParams['synMech'],
             'weight': weightDistFunc.format(**synParams),
@@ -1697,8 +1697,8 @@ if cfg.poissonInputs:
                 'lamtha': 100.}]
 
     for i,synParams in enumerate(synParamsList):
-        netParams.connParams['extPoisson->L5Basket_%d'%(i)] = { 
-            'preConds': {'pop': 'extPoisson_L5Basket'}, 
+        netParams.connParams['extPoisson->L5Basket_%d'%(i)] = {
+            'preConds': {'pop': 'extPoisson_L5Basket'},
             'postConds': {'pop': 'L5Basket'},
             'synMech': synParams['synMech'],
             'weight': weightDistFunc.format(**synParams),
@@ -1709,7 +1709,7 @@ if cfg.poissonInputs:
 
 
 #------------------------------------------------------------------------------
-# Gaussian-distributed inputs parameters 
+# Gaussian-distributed inputs parameters
 #------------------------------------------------------------------------------
 
 if cfg.gaussInputs:
@@ -1732,8 +1732,8 @@ if cfg.gaussInputs:
                 'A_delay': 0.1,
                 'lamtha': 100.}
 
-    netParams.connParams['extGauss->L2Pyr'] = { 
-        'preConds': {'pop': 'extGauss_L2Pyr'}, 
+    netParams.connParams['extGauss->L2Pyr'] = {
+        'preConds': {'pop': 'extGauss_L2Pyr'},
         'postConds': {'pop': 'L2Pyr'},
         'synMech': synParams['synMech'],
         'weight': weightDistFunc.format(**synParams),
@@ -1760,8 +1760,8 @@ if cfg.gaussInputs:
                 'A_delay': 0.1,
                 'lamtha': 100.}
 
-    netParams.connParams['extGauss->L5Pyr'] = { 
-        'preConds': {'pop': 'extGauss_L5Pyr'}, 
+    netParams.connParams['extGauss->L5Pyr'] = {
+        'preConds': {'pop': 'extGauss_L5Pyr'},
         'postConds': {'pop': 'L5Pyr'},
         'synMech': synParams['synMech'],
         'weight': weightDistFunc.format(**synParams),

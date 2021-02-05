@@ -11,3 +11,7 @@
 /run_pulse_hnn.html
 /LEMS_*ml
 *_nrn.py
+*.mod
+*gv*
+/mod/x86_64
+/clean.sh
